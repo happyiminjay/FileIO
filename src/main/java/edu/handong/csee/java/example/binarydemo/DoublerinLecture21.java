@@ -19,7 +19,7 @@ public class DoublerinLecture21 {
 	}
 
 	private void run() {
-		String biranyFileName = "out.dat";
+		String biranyFileName = "numbersDoubled.dat";
 		try {
 			ObjectInputStream stream = new ObjectInputStream(new FileInputStream(biranyFileName));
 			
@@ -29,19 +29,10 @@ public class DoublerinLecture21 {
 				anInteger = stream.readInt();
 			}
 			stream.close();
-			
-			ArrayList<Integer> doubledNumbers = doubleIntNumbers();
-			
-			// to save doubledNumbers into a file name, doubledOut.dat
-			String finalOutBinaryFile = "doubledOut.dat";
-			
-			ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream(finalOutBinaryFile));
-			
-			for(int currentDoubledInt:doubledNumbers) {
-				outStream.writeInt(currentDoubledInt);
+			for(int a : numbersFromBinaryFile)
+			{
+				System.out.println(a);
 			}
-			
-			outStream.close();
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -52,15 +43,4 @@ public class DoublerinLecture21 {
 		}
 		
 	}
-
-	private ArrayList<Integer> doubleIntNumbers() {
-		ArrayList<Integer> doubledNumbers = new ArrayList<Integer>();
-		
-		for(Integer currentInt:numbersFromBinaryFile) {
-			doubledNumbers.add(currentInt*2);
-		}
-		
-		return doubledNumbers;
-	}
-
 }
